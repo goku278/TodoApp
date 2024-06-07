@@ -85,6 +85,8 @@ class TasksAdapter(private val itemList: ArrayList<Todos>,
 
             btSubmit.setOnClickListener {
                 item.isEdit = true
+                item.isAdd = false
+                item.isDelete = false
                 item.todo = todoTask.text.toString()
                 btSubmit.isVisible = false
                 todoTask.isEnabled = false
@@ -126,6 +128,8 @@ class TasksAdapter(private val itemList: ArrayList<Todos>,
         private fun deleteTask(position: Int, todos: Todos) {
             // Implement the delete task logic here
             todos.isDelete = true
+            todos.isAdd = false
+            todos.isEdit = false
             if (itemList.contains(todos)) {
                 itemList.remove(todos)
                 notifyDataSetChanged()
